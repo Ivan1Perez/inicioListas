@@ -1,5 +1,6 @@
 package TAD;
 
+
 public class Lista {
 
     private int size;
@@ -31,23 +32,33 @@ public class Lista {
         return array;
     }
 
-//    public void remove(int index){
-//
-//        if(index<size || index>0){
-//            Node aux = cabeza;
-//
-//            while(index>0){
-//                aux=aux.getNext();
-//
-//                index--;
-//            }
-//
-//            info = null;
-//            size--;
-//        }
+    public Integer remove(int index){
+        if(index>=size||index<0){
+            return null;
+        }
 
+        Integer value = null;
 
+        if(index==0){
+            cabeza = cabeza.getNext();
+        }else{
+            Node aux = cabeza;
+            Node aux2 = cabeza.getNext();
+
+            while(index>1){
+                aux=aux2;
+                aux2=aux2.getNext();
+                index--;
+            }
+            value = aux2.getInfo();
+            aux.setNext(aux2.getNext());
+        }
+
+        size--;
+        return value;
     }
+
+
 
 
     public void addHead(int numero){
@@ -135,6 +146,46 @@ public class Lista {
 //        }
 //        size++;
 //    }
+
+    public boolean addAll(Lista l){
+
+        boolean modificado = false;
+        Node aux = l.cabeza;
+
+        while(aux!=null){
+            modificado=true;
+            addTail(aux.getInfo());
+            aux=aux.getNext();
+        }
+
+        return modificado;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Lista){
+            Lista l = (Lista) obj;
+            if(l.size!=size)
+                return false;
+
+            boolean encontrado = false;
+            Node aux = cabeza;
+            Node aux2 = l.cabeza;
+            while (aux!=null && !encontrado){
+                if(!aux.equals(aux2))
+                    encontrado=true;
+
+                aux = aux.getNext();
+                aux2 = aux2.getNext();
+            }
+
+            return !encontrado;
+        }
+
+        return false;
+    }
+
+
 
     @Override
     public String toString() {

@@ -23,6 +23,15 @@ public class Node {
     }
 
     @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Node){
+            Node aux = (Node)obj;
+            return aux.info==info;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         return info + ((next!=null)?" "+next.toString():"");
     }

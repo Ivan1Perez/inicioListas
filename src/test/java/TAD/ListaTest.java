@@ -5,7 +5,6 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
 
 class ListaTest {
-
     static Lista lista;
 
     @BeforeEach
@@ -31,6 +30,22 @@ class ListaTest {
         assertEquals(3,lista.get(2));
         assertNull(lista.get(3));
         assertNull(lista.get(-1));
+    }
+
+    @Test
+    void addAll(){
+        lista.addHead(3);
+        lista.addHead(6);
+        lista.addHead(7);
+
+        Lista l2 = new Lista();
+        l2.addTail(8);
+
+        assertTrue(lista.addAll(l2));
+        assertFalse(lista.addAll(new Lista()));
+
+
+
     }
 
 }
