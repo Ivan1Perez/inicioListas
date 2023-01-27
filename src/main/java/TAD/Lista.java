@@ -152,10 +152,10 @@ public class Lista {
         boolean modificado = false;
         Node aux = l.cabeza;
 
-        while(aux!=null){
-            modificado=true;
+        for(int i=0;i<l.size;i++) {
             addTail(aux.getInfo());
-            aux=aux.getNext();
+            aux = aux.getNext();
+            modificado = true;
         }
 
         return modificado;

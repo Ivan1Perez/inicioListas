@@ -14,6 +14,8 @@ public class Test {
         lista.addTail(0);
 
         System.out.println(lista);
+        lista.addAll(lista);
+        System.out.println(lista);
 //        System.out.println(lista.contains(6));
 //        System.out.println(lista.contains(-2));
 //
