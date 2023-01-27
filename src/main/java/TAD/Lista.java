@@ -40,6 +40,7 @@ public class Lista {
         Integer value = null;
 
         if(index==0){
+            value = cabeza.getInfo();
             cabeza = cabeza.getNext();
         }else{
             Node aux = cabeza;
@@ -74,18 +75,6 @@ public class Lista {
 
         size++;
     }
-//    public void addHead(int numero){
-//        Node node = new Node(numero);
-//
-//        if(cabeza==null)
-//            cabeza= node;
-//        else {
-//            node.setNext(cabeza);
-//            cabeza=node;
-//        }
-//
-//        size++;
-//    }
 
     public boolean contains(int numero){
 
@@ -132,30 +121,18 @@ public class Lista {
         }
         size++;
     }
-//    public void addTail(int numero){
-//        Node node = new Node(numero);
-//
-//        if(cabeza==null)
-//            cabeza = node;
-//        else{
-//            Node aux = cabeza;
-//            while(aux.getNext()!=null)
-//                aux=aux.getNext();
-//
-//            aux.setNext(node);
-//        }
-//        size++;
-//    }
 
     public boolean addAll(Lista l){
 
         boolean modificado = false;
         Node aux = l.cabeza;
+        int i = size;
 
-        while(aux!=null){
+        while(aux!=null && i>0){
             modificado=true;
             addTail(aux.getInfo());
             aux=aux.getNext();
+            i--;
         }
 
         return modificado;
@@ -186,13 +163,10 @@ public class Lista {
     }
 
 
-
     @Override
-    public String toString() {
-        return "Lista{" +
-                "size=" + size +
-                ", valores = " + cabeza +
-                '}';
+    public String toString(){
+        return "{ size: "+size +", Values: " +((cabeza==null)?"}":cabeza.toString());
     }
+
 
 }
