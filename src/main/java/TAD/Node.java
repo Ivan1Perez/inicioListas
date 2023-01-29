@@ -33,7 +33,7 @@ public class Node {
 
     @Override
     public String toString() {
-        return info + ((next!=null)?", "+next:" }");
+        return info + ((next!=null)?", "+next:"");
     }
 
 }

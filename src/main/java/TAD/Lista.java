@@ -151,8 +151,9 @@ public class Lista {
 
         boolean modificado = false;
         Node aux = l.cabeza;
+        int originalSize = l.size;
 
-        for(int i=0;i<l.size;i++) {
+        for(int i=0;i<originalSize;i++) {
             addTail(aux.getInfo());
             aux = aux.getNext();
             modificado = true;
